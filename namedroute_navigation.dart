@@ -110,8 +110,23 @@ class AboutScreen extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 250),
-          Text('Welcome to About Page.'),
+          SizedBox(height: 150),
+          Container(
+            width: 200,
+            height: 100,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.blue,
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: Offset(0, 3),
+                ),
+              ],
+            ),
+            child: Center(child: Text('Welcome to About Page.',),),
+          ),
         ],
       ),
     );
@@ -154,8 +169,23 @@ class AchievementsScreen extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 250),
-          Text('Welcome to Achievements Page.'),
+          SizedBox(height: 150),
+          Container(
+            width: 200,
+            height: 100,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.blue,
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: Offset(0, 3),
+                ),
+              ],
+            ),
+            child: Center(child: Text('Welcome to Achievement Page.',),),
+          ),
         ],
       ),
     );
@@ -198,8 +228,23 @@ class ContactScreen extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 250),
-          Text('Welcome to Contact Page.'),
+          SizedBox(height: 150),
+          Container(
+            width: 200,
+            height: 100,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.blue,
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: Offset(0, 3),
+                ),
+              ],
+            ),
+            child: Center(child: Text('Welcome to Contact Page.',),),
+          ),
         ],
       ),
     );
