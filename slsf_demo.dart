@@ -1,121 +1,75 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
+// Top-level app widget
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
-
-
   Widget build(BuildContext context) {
-
     return MaterialApp(
-      title: 'Stateless & Stateful widgets Demo',
-      home: const MyHomePage(title: 'Login Page'), // Set MyHomePage as the home widget
+      title: 'Stateless vs Stateful Demo',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Flutter Widget Demo'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MyStatelessWidget(),   // Static text widget
+              SizedBox(height: 20),
+              MyStatefulWidget(),    // Counter with button
+            ],
+          ),
+        ),
+      ),
     );
-
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-
-  final String title;
-
+// A simple StatelessWidget
+class MyStatelessWidget extends StatelessWidget {
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  Widget build(BuildContext context) {
+    return Text(
+      'I am a Stateless Widget',
+      style: TextStyle(fontSize: 20, color: Colors.blue),
+    );
+  }
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+// A StatefulWidget that increments a counter
+class MyStatefulWidget extends StatefulWidget {
+  @override
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+}
 
-  void _incrementCounter() {
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int counter = 0;
+
+  void _increment() {
     setState(() {
-
-      _counter++;
+      counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
-
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-
-      ),
-
-      body: Center(
-        child: Container(
-          height: 250,
-          width: 250,
-          decoration: BoxDecoration(
-            border: Border.all(color: Colors.black, width: 2.5), // Set border color and width
-            borderRadius: BorderRadius.circular(8), // Optional: add rounded corners
-          ),
-          padding: const EdgeInsets.all(16.0),
-
-          child: Column( // Use Column to arrange children vertically
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              const Text(
-                'LOGIN',
-                style: TextStyle(
-                  color: Colors.purple, // Set the text color here
-                  fontSize: 24, // Optional: set the font size
-                  fontWeight: FontWeight.bold, // Optional: set the font weight
-                ),
-              ),
-              const SizedBox(height: 8),
-              const TextField(
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.grey, width: 1.0), // Border when enabled
-                    ),
-                  )
-                ),
-
-              const SizedBox(height: 16),
-
-              const TextField(
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  border: OutlineInputBorder(),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.grey, width: 1.0), // Border when enabled
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 16),
-
-              ElevatedButton(
-
-                onPressed: () {},
-
-                child: const Text('Login'),
-
-              ),
-
-            ],
-
-          ),
-
+    return Column(
+      children: [
+        Text(
+          'Counter: $counter',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
-
-      ),
-
+        SizedBox(height: 10),
+        ElevatedButton(
+          onPressed: _increment,
+          child: Text('Increment'),
+        ),
+      ],
     );
-
   }
 }
